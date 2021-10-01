@@ -1,6 +1,6 @@
 class User{
-    constructor(name, age, paymentType, paymentTotal){
-        this.name = name
+    constructor(username, age, paymentType, paymentTotal){
+        this.username = username
         this.age = age 
         this.paymentType = paymentType
         this.paymentTotal = paymentTotal
@@ -27,24 +27,20 @@ if(this.paymentTotal < 20){
 }
 	}
 }
-class Baby extends User {
-    constructor(name, age, paymentType, paymentTotal, WA){ //WA = With adult 
-    super(name, age, paymentType, paymentTotal)
-    this.WA = WA}
-}
-function checkAge(age){
-    if(age >= 18) {
-		console.log('Age is old eough');
+
+
+function checkAge(age, adultAge){
+    if(age >= 18 || adultAge >=18) {
+		console.log(` Adult age ${adultAge} is old eough, and you may rent a scooter!!`);
 	} else if (age<18){
-		let adult = 18
-		 age= adult
-		console.log(`adult age ${age} is old enough`);
+		
+		console.log(` age ${age} is not old enough`);
 	}
 }
         
     
 //console.log(User.isValidPaymentType('zelle'));
-console.log(checkAge(13));
+//console.log(checkAge(13,18));
 
 //console.log(user1.checkPayment());
 

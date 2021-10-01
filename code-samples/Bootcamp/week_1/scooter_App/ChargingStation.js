@@ -8,9 +8,9 @@ const user2 = new User('Skyler',18,'zelle',20)
 class ChargingStation {
 	constructor(name, payment) {
 		
-		this.payment = payment;
+		this.payment = parseInt(payment +"$/hr");
 		this.name = name
-		this.stations = {'Scooters':[],}
+		this.stations = {'Scooters Available':[],}
 	}
 	static ageCheck(age) {
 		if (age < 18) {
@@ -48,20 +48,23 @@ class ChargingStation {
 		this.stations[station].push(scooter)
 		console.log(this.stations);
 	}
+	removeScooter(station,scooter){
+		this.stations[station].pop(scooter)
+		console.log(this.stations)}
 }
 
 
 
 
 //console.log(ChargingStation.markedAsBroken(scooter1.maintenance));
-console.log(User.isValidPaymentType(user2));
+//console.log(User.isValidPaymentType(user2.paymentType));
 //console.log(ChargingStation.chargeScooter(scooter1.batteryStatus));
 //console.log(ChargingStation.markedAsReturned(scooter1.returned));
 //console.log(scootersAvailable(scooter1));
-let scooter1 = new Scooter(1, 10, 'Atl','no');
+//let scooter1 = new Scooter(1, 10, 'Atl','no');
 const station1  = new ChargingStation('clazo');
 //console.log(user2);
-//console.log(station1.addScooter('Scooters',scooter1));
+//console.log(station1.addScooter('Scooters Available', scooter1));
 
 
 module.exports = ChargingStation;

@@ -1,23 +1,16 @@
 const User = require('./User');
 const Scooter = require('./Scooter');
-const City = require('./City')
 
-class Nick extends User {
-	constructor(age, payment, scooter, name) {
-		super(age, payment, scooter);
-		this.name = name;
-	}
-}
+const user2 = new User('Skyler',18,'zelle',20)
+
+//const nick = new Nick(20, '20$', 'No', 'Nick');
 
 class ChargingStation {
-	constructor(scooter, payment, maintenance, name, scooterType) {
-		super()
-		this.scooter = scooter;
-
+	constructor(name, payment) {
+		
 		this.payment = payment;
-		this.maintenance = maintenance;
-		this.name = name;
-		this.scooterType = [];
+		this.name = name
+		this.stations = {'Scooters':[],}
 	}
 	static ageCheck(age) {
 		if (age < 18) {
@@ -28,17 +21,47 @@ class ChargingStation {
 	}
 	static markedAsBroken(scooter) {
 		if (scooter === 'No' || 'no') {
-			console.log('Doesnt need Maintenance!!!');
-			this.maintenance = scooter;
+			console.log('This scooter does not need Maintenance!!!');
 		} else if (scooter === 'Yes' || 'yes') {
-			this.maintenance = scooter;
-			console.log('Needs Maintenance!!');
+			console.log('This scooter Needs Maintenance!!');
 		}
 	}
-	static checkType(scooter) {}
+	static chargeScooter(batteryStatus) {
+		while (batteryStatus < 20) {
+			batteryStatus++;
+			console.log(batteryStatus);
+		}
+		console.log('Scooter is now fully Charged!!');
+		if(batteryStatus == 20){
+			console.log("this Scooter is ready for use");
+			
+		}
+	}
+	static markedAsReturned(returned) {
+		 if(returned==='Yes'||'yes'){
+			 console.log('Scooter has been returned');
+		 } else if(returned==="No"||"no"){
+			 console.log(`Scooter has not been returned`);
+		 }
+	}
+	addScooter(station,scooter){
+		this.stations[station].push(scooter)
+		console.log(this.stations);
+	}
 }
 
-const nick = new Nick(17, '20$', 'No', 'Nick');
+
+
+
+//console.log(ChargingStation.markedAsBroken(scooter1.maintenance));
+console.log(User.isValidPaymentType(user2));
+//console.log(ChargingStation.chargeScooter(scooter1.batteryStatus));
+//console.log(ChargingStation.markedAsReturned(scooter1.returned));
+//console.log(scootersAvailable(scooter1));
+let scooter1 = new Scooter(1, 10, 'Atl','no');
+const station1  = new ChargingStation('clazo');
+//console.log(user2);
+//console.log(station1.addScooter('Scooters',scooter1));
 
 
 module.exports = ChargingStation;

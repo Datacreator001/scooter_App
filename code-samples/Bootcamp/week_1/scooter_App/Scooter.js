@@ -1,9 +1,10 @@
 class Scooter {
 	constructor(number, batteryStatus, location, maintenance) {
 		this.number = 'RocketPower' + number; // creates a naming sequence for the scooters
-		this.batteryStatus = batteryStatus ; // how much battery each
+		this.batteryStatus = batteryStatus; // how much battery each
 		this.location = location; // which charging station its located at
 		this.maintenance = maintenance;
+		this.users ={'Users renting this scooter':[]}
 	}
 	static mileRange(scooter) {
 		const Range = Scooter.batteryStatus * 0.2; // each mile percentage is equal .20 miles
@@ -12,6 +13,10 @@ class Scooter {
 		} else {
 			return `This ${Scooter.number} has this ${Range} miles left`;
 		}
+	}
+	addUser(user, scooter) {
+this.users[user].push(scooter)
+//console.log(this.users);
 	}
 }
 class RocketPower extends Scooter {
@@ -32,5 +37,6 @@ class RocketPower extends Scooter {
 			//push this scooter to its respective station and make it avaialable to charge/checkout
 		}
 	}
+	
 }
 module.exports = Scooter;

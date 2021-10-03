@@ -10,15 +10,9 @@ class ChargingStation {
 		
 		this.payment = parseInt(payment +"$/hr");
 		this.name = name
-		this.stations = {'Scooters Available':[],}
+		this.scooters = {'Scooters Available':[],}
 	}
-	static ageCheck(age) {
-		if (age < 18) {
-			console.log(`${age} is not old enough`);
-		} else {
-			console.log(`Age ${age} is old enough and you may rent a scooter!`);
-		}
-	}
+	
 	static markedAsBroken(scooter) {
 		if (scooter === 'No' || 'no') {
 			console.log('This scooter does not need Maintenance!!!');
@@ -27,7 +21,7 @@ class ChargingStation {
 		}
 	}
 	static chargeScooter(batteryStatus) {
-		while (batteryStatus < 20) {
+		while (batteryStatus === 0) {
 			batteryStatus++;
 			console.log(batteryStatus);
 		}
@@ -45,14 +39,14 @@ class ChargingStation {
 		 }
 	}
 	addScooter(station,scooter){
-		this.stations[station].push(scooter)
-		console.log(this.stations);
+		this.scooters[station].push(scooter)
+		//console.log(this.scooters);
 	}
 	removeScooter(station,scooter){
-		this.stations[station].pop(scooter)
-		console.log(this.stations)}
+		this.scooters[station].pop(scooter)
+		//console.log(this.stations)}
 }
-
+}
 
 
 
@@ -62,7 +56,9 @@ class ChargingStation {
 //console.log(ChargingStation.markedAsReturned(scooter1.returned));
 //console.log(scootersAvailable(scooter1));
 //let scooter1 = new Scooter(1, 10, 'Atl','no');
-const station1  = new ChargingStation('clazo');
+//let scooter1 = new Scooter(1, 10, 'Atl', 'no');
+//let station3 = new ChargingStation('BlazingWheelz', 20);
+//station3.addScooter('Scooters Available', scooter1);
 //console.log(user2);
 //console.log(station1.addScooter('Scooters Available', scooter1));
 

@@ -8,18 +8,11 @@ class User{
     static nameIsString(name) {
         return typeof name === 'string'
     }
-static ageCheck(age)  {
-    if (age < 18) {
-        console.log(`${age} not old enough`);
-    } else { 
-        console.log(`Age ${age} old enough and scooter available to rent`)
-    }
-}
     static isValidPaymentType(paymentType) {
         const money = ['credit', 'debit', 'zelle', 'cashApp', 'payPal']
         return (money.includes(paymentType))
     }
-	checkPayment(payment){
+	paymentRecieve(payment){
 if(this.paymentTotal < 20){
 	console.log("insufucient funds");
 } else if(this.paymentTotal = 20){

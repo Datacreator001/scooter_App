@@ -1,9 +1,9 @@
 class Scooter {
-	constructor(number, batteryStatus, location, maintenance) {
+	constructor(number, batteryStatus, location) {
 		this.number = 'RocketPower' + number; // creates a naming sequence for the scooters
 		this.batteryStatus = batteryStatus; // how much battery each
 		this.location = location; // which charging station its located at
-		this.maintenance = maintenance;
+		
 		this.users ={'Users renting this scooter':[]}
 	}
 	static mileRange(scooter) {
@@ -17,6 +17,9 @@ class Scooter {
 	addUser(user, scooter) {
 this.users[user].push(scooter)
 //console.log(this.users);
+	}
+	removeUser(user,scooter){
+		this.users[user].pop(scooter);
 	}
 }
 class RocketPower extends Scooter {

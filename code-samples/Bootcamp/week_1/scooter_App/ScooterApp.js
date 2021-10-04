@@ -7,8 +7,9 @@ const { warn } = require('console');
 
 let cityAtl = new City('Atl');
 let chargingstation1 = new ChargingStation('Ride With Pride', 20);
-let scooter1 = new Scooter(1, 100, 'Atl', 'no');
-let bob = new User('BobRides123', 18, 'zelle', 20);
+let scooter1 = new Scooter(1, 100, 'Atl');
+let bob = new User('BobRides123', 20, 'zelle', 20, 'No');
+var range = 0;
 
 cityAtl.addChargingStation('Atl', chargingstation1);
 chargingstation1.addScooter('Scooters Available', scooter1);
@@ -20,46 +21,54 @@ const downloadApp = (user) => {
 		if (user.age >= 18) {
 			scooter1.addUser('Users renting this scooter', bob);
 			chargingstation1.removeScooter('Scooters Available', scooter1);
-			// console.log(scooter1);
-			console.log(`This scooter's battery Status is ${scooter1.batteryStatus}%, and is fully charged`)
-			console.log(`Enjoy the ride ${bob.username}`);;
-			const batteryDeplete = function () {
-				var range = 0;
-				while (range < 22) {
-					(function (i) {
-						setTimeout(function () {
-							scooter1.batteryStatus= scooter1.batteryStatus -Math.trunc((scooter1.batteryStatus*(.02)^4));
-							console.log(`Battery Status is ${scooter1.batteryStatus}%`);
-							// console.log(scooter1);
-						}, 600 * i);
-					})(range++);
+			console.log(scooter1);
+			console.log(scooter1.users['Users renting this scooter'][0]);
+			console.log(
+				`This scooter's battery Status is ${scooter1.batteryStatus}%, and is fully charged`
+			);
+			function markedAsBroken(YesOrNo) {
+				if (YesOrNo === 'No') {
+					console.log('This scooter does not need Maintenance!!!');
+
+					console.log(`Enjoy the ride ${bob.username}`);
+
+					const batteryDeplete = function () {
+						while (range < 20) {
+							(function (i) {
+								setTimeout(function () {
+									scooter1.batteryStatus =
+										scooter1.batteryStatus -
+										Math.trunc((scooter1.batteryStatus * 0.001) ^ 5);
+									console.log(`Battery Status is ${scooter1.batteryStatus}% `);
+									//console.log(scooter1);
+								}, 600 * i);
+							})(range++);
+						}
+					};
+					batteryDeplete()
+				} else if (YesOrNo === 'Yes') {
+					console.log('Excuse Me!!!! This scooter is broken!!!! Where is the manager!! ');
 				}
-			};
-			const batteryRecharge = function () {
-				var i = 0;
-				while (i < 20) {
-					(function (i) {
-						setTimeout(function () {
-							scooter1.batteryStatus++;
-							console.log(`Battery Status is ${scooter1.batteryStatus}%`);
-							//console.log(scooter1);
-						}, 600 * i);
-					})(i++);
-				}
-			};
-			if (scooter1.batteryStatus > 0) {
-				batteryDeplete();
-			}
-		} else {
-			console.log('Sorry your not old enough to rent a scooter');
-		}
-		console.log(
-			'============================================================================================================='
-		);
+				
+				console.log(
+					'============================================================================================================='
+				);
+			}markedAsBroken(bob.needsMaintenance)
+		} else {console.log('Beat it Kid!!!! I have a busniess to run!!!!');}
 	}
+	
 };
 
-console.log(downloadApp('scooterApp'));
+ console.log(downloadApp('scooterApp'));
+ console.log(
+ 	`Max Range is 20 miles and battery decreases by 5% per mile driven or
+	 5%/mi`
+ );
+//  console.log(
+// 		cityAtl.stations['Atl'][0].scooters['Scooters Available'][0].users[
+// 			'Users renting this scooter'
+// 		][0]
+//  );
 
 //console.log(scooter1);
 

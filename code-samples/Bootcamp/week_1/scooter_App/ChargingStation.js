@@ -1,54 +1,43 @@
 const User = require('./User');
 const Scooter = require('./Scooter');
 
-const user2 = new User('Skyler',18,'zelle',20)
+const user2 = new User('Skyler', 18, 'zelle', 20);
 
 //const nick = new Nick(20, '20$', 'No', 'Nick');
 
 class ChargingStation {
 	constructor(name, payment) {
-		
-		this.payment = parseInt(payment +"$/hr");
-		this.name = name
-		this.scooters = {'Scooters Available':[],}
+		this.payment = parseInt(payment + '$/hr');
+		this.name = name;
+		this.scooters = { 'Scooters Available': [] };
 	}
-	
-	static markedAsBroken(scooter) {
-		if (scooter === 'No' || 'no') {
-			console.log('This scooter does not need Maintenance!!!');
-		} else if (scooter === 'Yes' || 'yes') {
-			console.log('This scooter Needs Maintenance!!');
-		}
-	}
+
 	static chargeScooter(batteryStatus) {
 		while (batteryStatus === 0) {
 			batteryStatus++;
 			console.log(batteryStatus);
 		}
 		console.log('Scooter is now fully Charged!!');
-		if(batteryStatus == 20){
-			console.log("this Scooter is ready for use");
-			
+		if (batteryStatus == 20) {
+			console.log('this Scooter is ready for use');
 		}
 	}
 	static markedAsReturned(returned) {
-		 if(returned==='Yes'||'yes'){
-			 console.log('Scooter has been returned');
-		 } else if(returned==="No"||"no"){
-			 console.log(`Scooter has not been returned`);
-		 }
+		if (returned === 'Yes' || 'yes') {
+			console.log('Scooter has been returned');
+		} else if (returned === 'No' || 'no') {
+			console.log(`Scooter has not been returned`);
+		}
 	}
-	addScooter(station,scooter){
-		this.scooters[station].push(scooter)
+	addScooter(station, scooter) {
+		this.scooters[station].push(scooter);
 		//console.log(this.scooters);
 	}
-	removeScooter(station,scooter){
-		this.scooters[station].pop(scooter)
+	removeScooter(station, scooter) {
+		this.scooters[station].pop(scooter);
 		//console.log(this.stations)}
+	}
 }
-}
-
-
 
 //console.log(ChargingStation.markedAsBroken(scooter1.maintenance));
 //console.log(User.isValidPaymentType(user2.paymentType));
@@ -61,6 +50,5 @@ class ChargingStation {
 //station3.addScooter('Scooters Available', scooter1);
 //console.log(user2);
 //console.log(station1.addScooter('Scooters Available', scooter1));
-
 
 module.exports = ChargingStation;

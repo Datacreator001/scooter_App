@@ -7,12 +7,14 @@ const { warn } = require('console');
 
 let cityAtl = new City('Atl');
 let chargingstation1 = new ChargingStation('Ride With Pride', 20);
+let chargingstation2 = new ChargingStation('Blazing wheelz', 20);
 let scooter1 = new Scooter(1, 100, 'Atl');
 let bob = new User('BobRides123', 20, 'zelle', 20, 'No');
 var range = 0;
 
 cityAtl.addChargingStation('Atl', chargingstation1);
 chargingstation1.addScooter('Scooters Available', scooter1);
+cityAtl.addChargingStation('Atl', chargingstation2);
 //scooter1.addUser('Users renting this scooter',bob);
 
 const downloadApp = (user) => {
@@ -47,10 +49,9 @@ const downloadApp = (user) => {
 
 					if (scooter1.batteryStatus > 0) {
 						batteryDeplete();
-					} else if (scooter1.batteryStatus===0) {
+					} else if (scooter1.batteryStatus === 0) {
 						console.log('Dead');
 					}
-					
 				} else if (YesOrNo === 'Yes') {
 					console.log(
 						'Excuse Me!!!! This scooter is broken!!!! Where is the manager!! '
@@ -73,6 +74,7 @@ console.log(
 	`Max Range is 20 miles and battery decreases by 5% per mile driven or
 	 5%/mi`
 );
+
 //  console.log(
 // 		cityAtl.stations['Atl'][0].scooters['Scooters Available'][0].users[
 // 			'Users renting this scooter'

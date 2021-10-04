@@ -27,13 +27,13 @@ const downloadApp = (user) => {
 			console.log(scooter1);
 			console.log(scooter1.users['Users renting this scooter'][0]);
 			console.log(
-				`This scooter's battery Status is ${scooter1.batteryStatus}%, and is fully charged`
+				`\nThis scooter's battery Status is ${scooter1.batteryStatus}%, and is fully charged\n`
 			);
 			function markedAsBroken(YesOrNo) {
 				if (YesOrNo === 'No') {
-					console.log('This scooter does not need Maintenance!!!');
+					console.log('\nThis scooter does not need Maintenance!!!\n');
 
-					console.log(` ${bob.username} Has rented ${scooter1.number}`);
+					console.log(`\n${bob.username} Has rented ${scooter1.number}\n`);
 
 					const batteryDeplete =  async function () {
 						while (range < 20) {
@@ -52,11 +52,13 @@ const downloadApp = (user) => {
 						batteryDeplete()
 							setTimeout(() => {
 								console.log(`${scooter1.number} Battery Status is ${scooter1.batteryStatus}% Please Reacharge Now!! 🔋`);
-								console.log(`${user.username} has returned ${scooter1.number}`);
+								console.log('======================================================================================');
+								console.log(`\n${user.username} has returned ${scooter1.number}\n`);
 								scooter1.removeUser('Users renting this scooter',bob);
 								chargingstation1.addScooter('Scooters Available',scooter1);
-								console.log(scooter1);
 								console.log(chargingstation1);
+								console.log(scooter1);
+								console.log(scooter1.users['Users renting this scooter'][0]);
 							}, 12000); 
 					} else if (scooter1.batteryStatus === 0) {
 						console.log('Dead');

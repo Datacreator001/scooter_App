@@ -31,7 +31,7 @@ const downloadApp = (user) => {
 			);
 			function markedAsBroken(YesOrNo) {
 				if (YesOrNo === 'No') {
-					console.log('\nThis scooter does not need Maintenance!!!\n');
+					console.log('This scooter does not need Maintenance!!!');
 
 					console.log(`\n${bob.username} Has rented ${scooter1.number}\n`);
 
@@ -52,7 +52,7 @@ const downloadApp = (user) => {
 						batteryDeplete()
 							setTimeout(() => {
 								console.log(`${scooter1.number} Battery Status is ${scooter1.batteryStatus}% Please Reacharge Now!! 🔋`);
-								console.log('======================================================================================');
+								console.log('========================================================================================================');
 								console.log(`\n${user.username} has returned ${scooter1.number}\n`);
 								scooter1.removeUser('Users renting this scooter',bob);
 								chargingstation1.addScooter('Scooters Available',scooter1);

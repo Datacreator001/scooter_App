@@ -30,7 +30,7 @@ const downloadApp = (user) => {
 				if (YesOrNo === 'No') {
 					console.log('This scooter does not need Maintenance!!!');
 
-					console.log(`Enjoy the ride ${bob.username}`);
+					console.log(` ${bob.username} Has rented ${scooter1.number}`);
 
 					const batteryDeplete = function () {
 						while (range < 20) {
@@ -40,30 +40,39 @@ const downloadApp = (user) => {
 										scooter1.batteryStatus -
 										Math.trunc((scooter1.batteryStatus * 0.001) ^ 5);
 									console.log(`Battery Status is ${scooter1.batteryStatus}% `);
-									//console.log(scooter1);
 								}, 600 * i);
 							})(range++);
 						}
 					};
-					batteryDeplete()
+
+					if (scooter1.batteryStatus > 0) {
+						batteryDeplete();
+					} else if (scooter1.batteryStatus===0) {
+						console.log('Dead');
+					}
+					
 				} else if (YesOrNo === 'Yes') {
-					console.log('Excuse Me!!!! This scooter is broken!!!! Where is the manager!! ');
+					console.log(
+						'Excuse Me!!!! This scooter is broken!!!! Where is the manager!! '
+					);
 				}
-				
+
 				console.log(
 					'============================================================================================================='
 				);
-			}markedAsBroken(bob.needsMaintenance)
-		} else {console.log('Beat it Kid!!!! I have a busniess to run!!!!');}
+			}
+			markedAsBroken(bob.needsMaintenance);
+		} else {
+			console.log('Beat it Kid!!!! I have a busniess to run!!!!');
+		}
 	}
-	
 };
 
- console.log(downloadApp('scooterApp'));
- console.log(
- 	`Max Range is 20 miles and battery decreases by 5% per mile driven or
+console.log(downloadApp('scooterApp'));
+console.log(
+	`Max Range is 20 miles and battery decreases by 5% per mile driven or
 	 5%/mi`
- );
+);
 //  console.log(
 // 		cityAtl.stations['Atl'][0].scooters['Scooters Available'][0].users[
 // 			'Users renting this scooter'

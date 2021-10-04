@@ -9,7 +9,7 @@ let cityAtl = new City('Atl');
 let chargingstation1 = new ChargingStation('Ride With Pride', 20);
 let chargingstation2 = new ChargingStation('Blazing wheelz', 20);
 let scooter1 = new Scooter(1, 100, 'Atl');
-let bob = new User('BobRides123', 20, 'zelle', 20, 'No');
+let bob = new User('BobRides123', 18, 'zelle', 20, 'No');
 var range = 0;
 
 cityAtl.addChargingStation('Atl', chargingstation1);
@@ -23,6 +23,7 @@ const downloadApp = (user) => {
 		if (user.age >= 18) {
 			scooter1.addUser('Users renting this scooter', bob);
 			chargingstation1.removeScooter('Scooters Available', scooter1);
+			console.log(chargingstation1);
 			console.log(scooter1);
 			console.log(scooter1.users['Users renting this scooter'][0]);
 			console.log(
@@ -34,7 +35,7 @@ const downloadApp = (user) => {
 
 					console.log(` ${bob.username} Has rented ${scooter1.number}`);
 
-					const batteryDeplete = function () {
+					const batteryDeplete =  async function () {
 						while (range < 20) {
 							(function (i) {
 								setTimeout(function () {
@@ -48,7 +49,15 @@ const downloadApp = (user) => {
 					};
 
 					if (scooter1.batteryStatus > 0) {
-						batteryDeplete();
+						batteryDeplete()
+							setTimeout(() => {
+								console.log(`${scooter1.number} Battery Status is ${scooter1.batteryStatus}% Please Reacharge Now!! 🔋`);
+								console.log(`${user.username} has returned ${scooter1.number}`);
+								scooter1.removeUser('Users renting this scooter',bob);
+								chargingstation1.addScooter('Scooters Available',scooter1);
+								console.log(scooter1);
+								console.log(chargingstation1);
+							}, 12000); 
 					} else if (scooter1.batteryStatus === 0) {
 						console.log('Dead');
 					}

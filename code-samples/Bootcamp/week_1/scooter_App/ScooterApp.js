@@ -42,7 +42,7 @@ const downloadApp = (user) => {
 									scooter1.batteryStatus =
 										scooter1.batteryStatus -
 										Math.trunc((scooter1.batteryStatus * 0.001) ^ 5);
-									console.log(`${scooter1.number} Battery is ${scooter1.batteryStatus}% `);
+									console.log(`${scooter1.number} Battery is ${scooter1.batteryStatus}% 🛵`);
 								}, 600 * i);
 							})(range++);
 						}
